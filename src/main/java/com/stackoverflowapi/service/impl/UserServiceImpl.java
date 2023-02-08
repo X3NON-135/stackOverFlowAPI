@@ -41,7 +41,7 @@ public class UserServiceImpl implements UserService {
             if (response.isSuccessful() && response.body() != null) {
                 users = Objects.requireNonNull(response.body()).getUsers().stream()
                         .filter(u -> u.getLocation() != null)
-                        .filter(u -> u.getLocation().contains("France")
+                        .filter(u -> u.getLocation().contains("Romania")
                                 || u.getLocation().contains("Moldova"))
                         .filter(u -> u.getReputation() >= 223)
                         .collect(Collectors.toList());
