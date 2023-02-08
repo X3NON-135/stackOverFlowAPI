@@ -24,7 +24,7 @@ Based on N-Tier architecture:
 * **http://localhost:8080/api/users/{ids}/questions** - to fetch user's questions, where ```{ids}``` is user ids separated by semicolon
 ___
 Some filters to changing between pages:
-append ```?page={number}``` to the end of URL for switching pages
+append ```?page={number}``` or ```?pagesize={number}``` or both ```page={number}&pagesize={number}``` to the end of URL for switching pages
 
 # Stack Exchange API Throttling Policy
 ```
