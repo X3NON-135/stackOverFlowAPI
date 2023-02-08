@@ -11,5 +11,4 @@ import lombok.ToString;
 @ToString
 public class ApiResponseDto<T> {
     private T content;
-    private boolean isSuccess;
 }
