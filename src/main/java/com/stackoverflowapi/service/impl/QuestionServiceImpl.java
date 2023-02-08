@@ -9,6 +9,7 @@ import com.stackoverflowapi.model.User;
 import com.stackoverflowapi.service.QuestionService;
 import com.stackoverflowapi.util.RetrofitUtil;
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -55,10 +56,13 @@ public class QuestionServiceImpl implements QuestionService {
     public List<User> appendQuestionsToUsers(Set<Question> questions, List<User> users) {
         Map<Integer, Long> userQuestions = questions.stream()
                 .collect(Collectors.groupingBy(a -> a.getOwner().getUserId(),
-                Collectors.counting()));
-        for (User user : users) {
-            user.setQuestionCount(userQuestions.get(user.getUserId()));
+                        Collectors.counting()));
+        if (users != null) {
+            for (User user : users) {
+                user.setQuestionCount(userQuestions.get(user.getUserId()));
+            }
+            return users;
         }
-        return users;
+        return Collections.emptyList();
     }
 }

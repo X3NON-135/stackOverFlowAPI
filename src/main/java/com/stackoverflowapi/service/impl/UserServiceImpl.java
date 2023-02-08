@@ -41,7 +41,7 @@ public class UserServiceImpl implements UserService {
             if (response.isSuccessful() && response.body() != null) {
                 users = Objects.requireNonNull(response.body()).getUsers().stream()
                         .filter(u -> u.getLocation() != null)
-                        .filter(u -> u.getLocation().contains("United Kingdom")
+                        .filter(u -> u.getLocation().contains("France")
                                 || u.getLocation().contains("Moldova"))
                         .filter(u -> u.getReputation() >= 223)
                         .collect(Collectors.toList());
@@ -55,7 +55,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<String> getUsersIds(List<User> users) {
-        return (users.size() > 0) ? users.stream()
+        return (users != null && users.size() > 0) ? users.stream()
                 .map(u -> u.getUserId().toString())
                 .collect(Collectors.toList()) : Collections.emptyList();
     }
